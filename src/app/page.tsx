@@ -1,12 +1,13 @@
-import Header from './components/Header'
-import Hero from './components/Hero'
-import Features from './components/Features'
-import UseCases from './components/UseCases'
-import HowItWorks from './components/HowItWorks'
-import Testimonials from './components/Testimonials'
-import Pricing from './components/Pricing'
-import FAQ from './components/FAQ'
-import Footer from './components/Footer'
+
+import Hero from '@/components/landing page/Hero'
+import Features from '@/components/landing page/Features'
+import UseCases from '@/components/landing page/UseCases'
+import HowItWorks from '@/components/landing page/HowItWorks'
+import Testimonials from '@/components/landing page/Testimonials'
+import Pricing from '@/components/landing page/Pricing'
+import FAQ from '@/components/landing page/FAQ'
+import Footer from '@/components/landing page/Footer'
+import Header from '@/components/landing page/Header'
 
 export default function Home() {
   return (
@@ -19,7 +20,7 @@ export default function Home() {
       <Testimonials />
       <Pricing />
       <FAQ />
-      <Footer />
+     <Footer/>
     </main>
   )
 }

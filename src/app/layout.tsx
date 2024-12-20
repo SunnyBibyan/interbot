@@ -1,11 +1,12 @@
-"use client"
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google"
-import { ThemeProvider } from "./components/Theme-Provider";
+
 
 import "./globals.css"
 
 import { ClerkProvider } from '@clerk/nextjs';
+import { ThemeProvider } from "@/components/landing page/Theme-Provider";
 
 
 const geistSans = Geist({

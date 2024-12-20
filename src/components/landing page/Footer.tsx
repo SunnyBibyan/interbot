@@ -1,9 +1,16 @@
-import Link from 'next/link'
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react'
+"use client"; // Mark this component as a Client Component
+
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
 
 export default function Footer() {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("Form submitted"); // Replace with actual form submission logic
+  };
+
   return (
     <footer className="bg-gray-900 text-white py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -16,9 +23,12 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              {['Features', 'Use Cases', 'Pricing', 'FAQ', 'Blog', 'Contact'].map((item) => (
+              {["Features", "Use Cases", "Pricing", "FAQ", "Blog", "Contact"].map((item) => (
                 <li key={item}>
-                  <Link href={`#${item.toLowerCase().replace(' ', '-')}`} className="hover:text-blue-400 transition-colors">
+                  <Link
+                    href={`#${item.toLowerCase().replace(" ", "-")}`}
+                    className="hover:text-blue-400 transition-colors"
+                  >
                     {item}
                   </Link>
                 </li>
@@ -28,10 +38,10 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-semibold mb-4">Stay Updated</h3>
             <p className="mb-4">Subscribe to our newsletter for the latest updates and tips.</p>
-            <form className="flex space-x-2" onSubmit={(e) => e.preventDefault()}>
-              <Input 
-                type="email" 
-                placeholder="Enter your email" 
+            <form className="flex space-x-2" onSubmit={handleSubmit}>
+              <Input
+                type="email"
+                placeholder="Enter your email"
                 className="bg-gray-800 text-white border-gray-700 focus:border-blue-500"
               />
               <Button type="submit">Subscribe</Button>
@@ -54,6 +64,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
-
