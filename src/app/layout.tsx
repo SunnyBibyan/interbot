@@ -1,15 +1,11 @@
+"use client"
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { ThemeProvider } from "@/components/theme-provider"
-import "./globals.css";
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton
-} from '@clerk/nextjs';
+import { Geist, Geist_Mono } from "next/font/google"
+import { ThemeProvider } from "./components/Theme-Provider";
 
+import "./globals.css"
+
+import { ClerkProvider } from '@clerk/nextjs';
 
 
 const geistSans = Geist({
@@ -35,7 +31,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
         </ThemeProvider>
