@@ -1,0 +1,92 @@
+// This is your Prisma schema file
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  fullname     String
+  clerkId      String    @unique
+  type         String
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  stripeId     String?
+  domains      Domain[]
+  subscription Billings?
+}
+
+model Domain {
+  id              String            @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name            String
+  icon            String
+  chatBot         ChatBot?
+  helpdesk        HelpDesk[]
+  filterQuestions FilterQuestions[]
+  customers       Customer[]        // Changed from customer to customers for clarity
+  User            User?            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId          String?          @db.Uuid
+}
+
+model ChatBot {
+  id             String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  welcomeMessage String?
+  icon           String?
+  background     String?
+  textColor      String?
+  helpdesk       Boolean @default(false)
+  Domain         Domain? @relation(fields: [domainId], references: [id], onDelete: Cascade)
+  domainId       String? @unique @db.Uuid
+}
+
+model Billings {
+  id      String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  plan    Plans   @default(STANDARD)
+  credits Int     @default(10)
+  User    User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId  String? @unique @db.Uuid
+}
+
+model HelpDesk {
+  id       String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  question String
+  answer   String
+  Domain   Domain? @relation(fields: [domainId], references: [id], onDelete: Cascade)
+  domainId String? @db.Uuid
+}
+
+model FilterQuestions {
+  id       String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  question String
+  answered String?
+  Domain   Domain? @relation(fields: [domainId], references: [id], onDelete: Cascade)
+  domainId String? @db.Uuid
+}
+
+model Customer {
+  id      String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  domains Domain[] // Fixed the relation to be many-to-many
+}
+
+model ChatMessage {
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  message   String
+  role      Role?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Plans {
+  STANDARD
+  PRO
+  ULTIMATE
+}
+
+enum Role {
+  user
+  customer
+}
