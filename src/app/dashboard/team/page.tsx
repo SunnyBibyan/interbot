@@ -19,7 +19,7 @@ export default function TeamPage() {
       <Card>
         <CardHeader>
           <CardTitle>Create an Organization</CardTitle>
-          <CardDescription>You haven't invited any team members yet.</CardDescription>
+          <CardDescription>You haven&apos;t invited any team members yet.</CardDescription>
         </CardHeader>
         <CardContent>
           <Button>

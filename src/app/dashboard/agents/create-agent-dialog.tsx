@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import {
   Dialog,
   DialogContent,
@@ -10,7 +10,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { Plus, X, ArrowLeft } from 'lucide-react'
+import { Plus, ArrowLeft } from 'lucide-react'
 import Image from "next/image"
 import { AgentForm } from './agent-form'
 
@@ -70,7 +70,15 @@ export function CreateAgentDialog() {
     }
   }
 
-  const handleFormSubmit = async (values: any) => {
+
+  interface AgentFormValues {
+    name?: string;
+    description?: string;
+    capabilities?: string;
+    // Add other fields that your form contains
+  }
+
+  const handleFormSubmit = async (values: AgentFormValues) => {
     console.log('Form submitted with values:', values)
     // Here you would typically send the data to your API
     // await createAgent(values)
@@ -103,6 +111,7 @@ export function CreateAgentDialog() {
             )}
             Create New Agent
           </DialogTitle>
+          <Button onClick={handleClose}>Close</Button>
         </DialogHeader>
         {step === 'select' ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">

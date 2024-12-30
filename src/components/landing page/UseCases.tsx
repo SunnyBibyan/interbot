@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import Image from 'next/image';
 
 const useCases = [
   {
@@ -81,17 +82,18 @@ export default function UseCases() {
             className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
-            {useCases.map((useCase, index) => (
+            {useCases.map((useCase) => (
               <div key={useCase.title} className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 snap-center px-4">
                 <Card className="h-full">
                   <CardHeader>
                     <CardTitle>{useCase.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <img
-                      src={useCase.image}
-                      alt={useCase.title}
-                      className="w-full h-48 object-cover rounded-md mb-4"
+                    <Image
+                      src="/placeholder.svg"
+                      alt="placeholder"
+                      width={300}    // specify the actual width you want
+                      height={200}   // specify the actual height you want
                     />
                     <CardDescription>{useCase.description}</CardDescription>
                   </CardContent>

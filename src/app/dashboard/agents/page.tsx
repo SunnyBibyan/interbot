@@ -5,7 +5,7 @@ import {
   CollapsibleContent, 
   CollapsibleTrigger 
 } from "@/components/ui/collapsible"
-import { Plus, PlayCircle, ChevronDown, Sparkles } from 'lucide-react'
+import { PlayCircle, ChevronDown, Sparkles } from 'lucide-react'
 import { CreateAgentDialog } from './create-agent-dialog'
 
 export default function AgentsPage() {

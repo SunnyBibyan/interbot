@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Users, Bot, ShoppingBag } from 'lucide-react'
+import { ArrowRight, Users, Bot } from 'lucide-react'
 import Link from 'next/link'
 
 export default function DashboardPage() {

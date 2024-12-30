@@ -115,7 +115,7 @@ export function AgentForm({ onSubmit, initialData, isLoading = false }: AgentFor
                 />
               </FormControl>
               <FormDescription>
-                Provide a clear description of your agent's capabilities
+                Provide a clear description of your agent&apos;s capabilities
               </FormDescription>
               <FormMessage />
             </FormItem>
